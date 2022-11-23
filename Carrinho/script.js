@@ -185,13 +185,13 @@ function totalFunc(){
 // Função do botão para mandar o pedido com os itens no whatsapp
 function mensagem(){
     var buttonWhatsApp = document.getElementById("buttonWhatsapp");
-    var mensagemWhats = 'https://api.whatsapp.com/send?l=pt_BR&phone=5511975009566&text=Boa%20noite%20pessoal,%20gostaria%20de%20pedir:';
+    var mensagemWhats = 'https://api.whatsapp.com/send?l=pt_BR&phone=5511975009566&text=Boa%20noite,%20gostaria%20de%20pedir:';
     
     let item = JSON.parse(sessionStorage.getItem('items'));
 
     // Adicionando os itens na mensagem
     item.forEach((item, indexid) => {
-        mensagemWhats += `%0A${(item.qtd).toString()} - ${(item.name).toString()};`;
+        mensagemWhats += `%0A${(item.qtd).toString()} - ${(item.name).toString()} - ${(item.preco * item.qtd).toLocaleString('pt-BR', {style: 'currency', currency: 'BRL'})};`;
     });
     
     // Adicionando a mensagem do WhatsApp no botão
